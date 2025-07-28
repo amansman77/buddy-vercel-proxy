@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Buddy Vercel Proxy
 
-## Getting Started
+Buddy API의 지역별 라우팅 문제를 해결하기 위한 Vercel 중계 서버입니다.
 
-First, run the development server:
+## 🎯 **목적**
+
+- **홍콩 지역 라우팅 문제 해결**: IPv6 요청이 홍콩으로 라우팅되어 OpenAI API 접근이 제한되는 문제
+- **Vercel의 자동 지역 최적화**: Vercel이 OpenAI API 접근 가능한 지역으로 자동 라우팅
+- **사용자 경험 개선**: 지역 제한 시 명확한 안내 메시지 제공
+
+## 🚀 **배포**
+
+### 1. Vercel CLI 설치
+```bash
+npm i -g vercel
+```
+
+### 2. 로그인
+```bash
+vercel login
+```
+
+### 3. 배포
+```bash
+vercel --prod
+```
+
+## 🔧 **로컬 개발**
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📊 **모니터링**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Vercel Dashboard에서 함수 실행 로그 확인
+- 지역별 응답 시간 모니터링
+- 오류율 추적
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔄 **다음 단계**
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **배포 후 테스트**: 5G 네트워크에서 API 호출 테스트
+2. **단단이 앱 업데이트**: API URL을 Vercel 프록시로 변경
+3. **성능 모니터링**: 응답 시간 및 안정성 확인
