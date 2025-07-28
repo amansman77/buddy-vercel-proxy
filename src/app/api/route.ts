@@ -22,14 +22,17 @@ export const POST = async (request: NextRequest): Promise<NextResponse> => {
       }, { status: 400, headers: corsHeaders });
     }
 
+    // apiKey와 apiUrl을 제외한 실제 API 요청 데이터 추출
+    const { apiKey, apiUrl, ...apiRequestData } = body;
+
     // API 호출
-    const response = await fetch(body.apiUrl, {
+    const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${body.apiKey}`,
+        'Authorization': `Bearer ${apiKey}`,
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify(apiRequestData),
     });
 
     const data = await response.json();
